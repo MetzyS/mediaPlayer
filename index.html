@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Audio Player</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="img/site-icon.png">
+    <style>
+        @keyframes rotation-cercle {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="player" src="assets/music/pokegym.mp3">Votre navigateur ne prend pas en charge la
+        fonctionnalité audio.</audio>
+    <div class="container-gris">
+        <div class="container-jaune">
+            <div class="gauche">
+                <div class="text-slider">
+                    <div class="titre-container">
+                        <span class="titre" id="current-titre">Titre musique en cours</span>
+                        <span id="album-img" class="album-img"></span>
+                        <span class="artiste artiste-top" id="current-artiste">Artiste</span>
+                    </div>
+                </div>
+                <div class="barre">
+                    <div id="barre-progression">
+                        <input type="range" name="progression-range" class="progression-range" id="progression-range"
+                            value="0" min="0" max="100" step="1">
+                    </div>
+                </div>
+                <div class="duration-container">
+                    <div id="duration-current">0:00</div>
+                    <div id="duration-restante">0:00</div>
+                </div>
+                <div class="bouttons-container">
+                    <div class="bouton-container prev"><button class="bouton" id="bouton-prev"></button></div>
+                    <div class="bouton-container play"><button class="bouton bouton-play" id="bouton-play"></button>
+                    </div>
+                    <div class="bouton-container stop"><button class="bouton" id="bouton-stop"></button></div>
+                    <div class="bouton-container next"><button class="bouton" id="bouton-next"></button></div>
+                </div>
+            </div>
+            <div class="gauche-2">
+                <div class="son-container">
+                    <i class="mute"></i>
+                    <i class="full"></i>
+                </div>
+                <div class="son-barre">
+                    <input type="range" name="volume" class="volume-range" id="volume-range" value="50" min="0"
+                        max="100" step="1">
+                </div>
+                <div class="musique-suivante-container">
+                    <div class="musique-suivante-div"><span class="musique-suivante" id="musique_suivante-1">Musique
+                            suivante</span>
+                        <div class="musique-align"><span class="artiste" id="artiste1">Artiste</span>
+                            <span class="duration-suivante" id="duration-suivante-1">00:00</span>
+                        </div>
+                    </div>
+                    <div class="musique-suivante-div"><span class="musique-suivante" id="musique_suivante-2">Musique
+                            suivante</span>
+                        <div class="musique-align"> <span class="artiste" id="artiste2">Artiste</span>
+                            <span class="duration-suivante" id="duration-suivante-2">00:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="liste-lecture-container test">
+                    <div class="list-button-container test"><i class="liste-button test"></i>
+                    </div>
+                    <span class="liste-titre test">Liste de lecture</span>
+                </div>
+                <div class="playlist-container none">
+                    <ul class="playlist-list">
+                        <li class="list-item" id="item1">
+                            <div class="list-item-container"><span class="list-title1 list-text-bold">Titre
+                                    1</span><span class="list-duration1">0:00</span></div>
+                            <span class="list-artist1">Artiste 1
+                            </span>
+                        </li>
+                        <li class="list-item" id="item2">
+                            <div class="list-item-container"><span class="list-title2 list-text-bold">Titre
+                                    2</span><span class="list-duration2">0:00</span></div>
+                            <span class="list-artist2">Artiste 2</span>
+                        </li>
+                        <li class="list-item" id="item3">
+                            <div class="list-item-container"><span class="list-title3 list-text-bold">Titre
+                                    3</span><span class="list-duration3">0:00</span></div>
+                            <span class="list-artist3">Artist 3</span>
+                        </li>
+                        <li class="list-item" id="item4">
+                            <div class="list-item-container"><span class="list-title4 list-text-bold">Titre
+                                    4</span><span class="list-duration4">0:00</span></div>
+                            <span class="list-artist4">Artist
+                                4</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="droite">
+                <div class="trapeze-bleu-fonce-contour">
+                    <div class="trapeze-bleu-fonce">
+                        <span class="text-cassette-player">STEREO CASSETTE PLAYER</span>
+                        <div class="trapeze-rose-contour">
+                            <div class="walkman-titre-container">
+                                <span class="walkman-titre">WALKMAN</span>
+                                <span class="arrow"></span>
+                            </div>
+                            <div class="trapeze-rose">
+                                <div class="trapeze-bleu-clair-contour">
+                                    <div class="trapeze-bleu-clair">
+                                        <div class="trapeze-gris-centre">
+                                            <span class="text-stereo">STEREO</span>
+                                            <div class="trapeze-fenetre">
+                                                <svg id="cassette" xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" data-name="Group 1"
+                                                    viewBox="0 0 731 464">
+                                                    <defs>
+                                                        <clipPath id="a">
+                                                            <rect width="731" height="464" rx="20" style="fill:none" />
+                                                        </clipPath>
+                                                    </defs>
+                                                    <g data-name="Rectangle 1 + Shape 316 1 + Shape 316 1 copy"
+                                                        style="isolation:isolate">
+                                                        <image
+                                                            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtsAAAHQCAYAAABwX6b2AAAACXBIWXMAAAsSAAALEgHS3X78AAATYElEQVR4Xu3dO3IzSXaA0Szw/QBAdmsNCskZQ6vWOsYZbULSCjQO8SZQJYMyJhTdeTE9vERl4RwXaTDIjv4/Fm/l7f7jz/8+FAAA4NvNogMAAMAfI7YBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABIIrYBACCJ2AYAgCRiGwAAkohtAABI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"
+                                                            width="731" height="464"
+                                                            data-name="Rectangle 1 + Shape 316 1 + Shape 316 1 copy Image"
+                                                            style="clip-path:url(#a)" />
+                                                    </g>
+                                                    <rect width="661.77" height="296.83" x="32.61" y="36.58"
+                                                        data-name="Rectangle 3" rx="20" style="fill:#99947c" />
+                                                    <rect width="651" height="292" x="38" y="39"
+                                                        data-name="Rectangle 3 copy" rx="20" style="fill:#fff" />
+                                                    <path d="M38 148h651v19H38z" data-name="Rectangle 6"
+                                                        style="fill:#9d1511" />
+                                                    <path d="M38 167h651v19H38z" data-name="Rectangle 6 copy" />
+                                                    <rect width="441" height="127" x="144" y="146"
+                                                        data-name="Rectangle 2" rx="20" style="fill:#99947c" />
+                                                    <rect width="422.16" height="121.58" x="153.42" y="148.71"
+                                                        data-name="Rectangle 2 copy" rx="20" style="fill:#c8c2a8" />
+                                                    <path d="M272.79 163.04h180.42v86.91H272.79z"
+                                                        data-name="Rectangle 5 copy" style="fill:#99947c" />
+                                                    <circle cx="212.48" cy="207.48" r="43.48" data-name="Ellipse 1"
+                                                        style="fill:#f7f4e8" transform="rotate(-45 212.477 207.47)" />
+                                                    <circle cx="521.48" cy="207.48" r="43.48" data-name="Ellipse 1 copy"
+                                                        style="fill:#f7f4e8" transform="rotate(-45 521.48 207.476)" />
+                                                    <circle cx="212.47" cy="207.47" r="37.4"
+                                                        data-name="Ellipse 1 copy 2" style="fill:#534c42" />
+                                                    <circle cx="521.47" cy="207.47" r="37.4"
+                                                        data-name="Ellipse 1 copy 3" style="fill:#534c42"
+                                                        transform="rotate(-13.28 521.575 207.511)" />
+                                                    <!-- Cercle qui doit être animé -->
+                                                    <g data-name="Ellipse 1 copy 4" class="cassette-cercle2" style="animation-name: rotation-cercle; animation: rotation-cercle 5s linear infinite;
+                                                    animation-duration: 3s;
+                                                    animation-iteration-count: infinite;
+                                                    animation-play-state: paused;
+                                                    transform-box: fill-box;
+                                                    transform-origin: center;
+                                                    display: inline-block;">
+                                                        <circle cx="212.48" cy="207.48" r="30.01"
+                                                            style="fill:#534c42" />
+                                                        <circle cx="212.48" cy="207.48" r="30.01"
+                                                            style="fill:none;stroke:#f7f4e8;stroke-width:10px;stroke-dasharray:40,20" />
+                                                    </g>
+                                                    <!-- Cercle qui doit être animé -->
+                                                    <g data-name="Ellipse 1 copy 5" class="cassette-cercle1" style="animation-name: rotation-cercle; animation: rotation-cercle 5s linear infinite;
+                                                    animation-duration: 3s;
+                                                    animation-iteration-count: infinite;
+                                                    animation-play-state: paused;
+                                                    transform-box: fill-box;
+                                                    transform-origin: center;
+                                                    display: inline-block;">
+
+                                                        <circle cx="521.48" cy="207.48" r="30.01"
+                                                            style="fill:#534c42" />
+                                                        <circle cx="521.48" cy="207.48" r="30.01"
+                                                            style="fill:none;stroke:#f7f4e8;stroke-width:10px;stroke-dasharray:40,20" />
+                                                    </g>
+                                                    <path d="M281 167h164v79H281z" data-name="Rectangle 5"
+                                                        style="fill:#79684d" />
+                                                    <path d="M55 59h44v46H55z" data-name="Rectangle 4"
+                                                        style="fill:#9d1511" />
+                                                    <path d="M116 57h552v2H116z" data-name="Line 1"
+                                                        style="fill:#c8c2a8" />
+                                                    <path d="M116 82h552v2H116z" data-name="Line 1 copy"
+                                                        style="fill:#c8c2a8" />
+                                                    <path d="M116 103h552v2H116z" data-name="Line 1 copy 2"
+                                                        style="fill:#c8c2a8" />
+                                                    <path d="M116 124h552v2H116z" data-name="Line 1 copy 3"
+                                                        style="fill:#c8c2a8" /><text data-name="D-C90"
+                                                        style="font-size:47px;font-family:Arial-Black,Arial;font-weight:800"
+                                                        transform="translate(142.01 318.35)">D-
+                                                        <tspan x="52.21" y="0" style="fill:#e3ff8c">C90</tspan>
+                                                    </text>
+                                                    <text data-name="TDK"
+                                                        style="font-size:45px;font-family:Arial-Black,Arial;font-weight:800"
+                                                        transform="matrix(1.23 0 0 .95 456.1 318.35)">TDK</text><text
+                                                        data-name="easter-egg"
+                                                        style="font-size:13px;font-weight:bold;font-family:Arial"
+                                                        transform="translate(305.44 303.81)">Les pizzas à l'ananas
+                                                    </text><text data-name="easter-egg2"
+                                                        style="font-size:13px;font-family:Arial"
+                                                        transform="translate(305.44 315.81)">ne sont pas des pizzas
+                                                        !</text><text data-name="B"
+                                                        style="font-size:45px;fill:#fff;font-family:Arial-BoldMT,Arial;font-weight:700"
+                                                        transform="translate(60.37 98.39)">B</text><text
+                                                        data-name="Noise Reduction"
+                                                        style="font-size:13px;font-family:ArialMT,Arial"
+                                                        transform="translate(597.99 202.59)">Noise<tspan x="0" y="15.6">
+                                                            Reduction</tspan></text><text
+                                                        data-name="Normal Bias EQ-120µs"
+                                                        style="font-size:13px;font-family:ArialMT,Arial"
+                                                        transform="translate(53.92 202.14)">Normal Bias<tspan x="0"
+                                                            y="15.6">EQ-120µs</tspan></text>
+                                                    <path d="M599 227h19v19h-19z" data-name="Rectangle 7"
+                                                        style="fill:none;stroke:#000;stroke-width:2px" />
+                                                    <path d="M599 250h19v19h-19z" data-name="Rectangle 7 copy"
+                                                        style="fill:none;stroke:#000;stroke-width:2px" />
+                                                    <text data-name="IN"
+                                                        style="font-size:20px;font-family:ArialMT,Arial"
+                                                        transform="translate(622.73 244.13)">IN</text><text
+                                                        data-name="OUT" style="font-size:20px;font-family:ArialMT,Arial"
+                                                        transform="translate(622.73 267.13)">OUT</text>
+                                                    <circle cx="167" cy="437" r="14" data-name="Ellipse 2"
+                                                        style="fill:#99947c" />
+                                                    <circle cx="579" cy="437" r="14" data-name="Ellipse 2 copy"
+                                                        style="fill:#99947c"
+                                                        transform="rotate(-22.5 579.004 437.004)" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="assets/main.js"></script>
+
+</html>
