@@ -460,9 +460,9 @@ body {
 
 .playlist-container {
     position: absolute;
-    margin-top: -2px;
+    /* margin-top: -2px; */
     width: 340px;
-    height: 195px;
+    height: 165px;
     background-color: var(--color-used-yellow);
     box-shadow: 2px 0px 10px var(--progress-bar);
     /* border: 2px solid var(--progress-bar); */
