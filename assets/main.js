@@ -121,6 +121,7 @@ function createPlaylistElement() {
 }
 createPlaylistElement();
 
+// Attache un eventListener pour chaque <li> crée précedemment
 for (let i = 0; i < trackList.length; i++) {
     let listItemList = document.querySelector('#item' + i);
     listItemList.addEventListener('click', e => {
