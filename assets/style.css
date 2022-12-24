@@ -420,6 +420,15 @@ body {
     height: 50px;
 }
 
+.liste-lecture-container:hover>.list-button-container>.liste-button {
+    background-color: white;
+}
+
+.liste-lecture-container:hover>.liste-titre {
+    color: black;
+}
+
+
 .list-button-container {
     display: flex;
     width: 30px;
@@ -440,18 +449,10 @@ body {
     cursor: pointer;
 }
 
-.liste-button:hover {
-    background-color: white;
-}
-
 .liste-titre {
     font-weight: bold;
     font-size: calc(var(--duration-text-s)*0.8);
     cursor: pointer;
-}
-
-.liste-titre:hover {
-    color: black;
 }
 
 .playlist-container {

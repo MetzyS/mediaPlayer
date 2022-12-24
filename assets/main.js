@@ -63,27 +63,76 @@ let artisteSuivant = document.querySelector('#artiste1');
 let artisteSuivant2 = document.querySelector('#artiste2');
 
 // Playlist
-let boutonPlaylist = document.querySelector('.test');
+let boutonPlaylist = document.querySelector('.jsnone');
 let playlistModal = document.querySelector('.playlist-container');
-let playlistTitre1 = document.querySelector('.list-title1');
-let playlistTitre2 = document.querySelector('.list-title2');
-let playlistTitre3 = document.querySelector('.list-title3');
-let playlistTitre4 = document.querySelector('.list-title4');
-let playlistDuration1 = document.querySelector('.list-duration1');
-let playlistDuration2 = document.querySelector('.list-duration2');
-let playlistDuration3 = document.querySelector('.list-duration3');
-let playlistDuration4 = document.querySelector('.list-duration4');
-let playlistArtist1 = document.querySelector('.list-artist1');
-let playlistArtist2 = document.querySelector('.list-artist2');
-let playlistArtist3 = document.querySelector('.list-artist3');
-let playlistArtist4 = document.querySelector('.list-artist4');
-let playlistItem1 = document.querySelector('#item1');
-let playlistItem2 = document.querySelector('#item2');
-let playlistItem3 = document.querySelector('#item3');
-let playlistItem4 = document.querySelector('#item4');
+let playlistList = document.querySelector('.playlist-list');
 
 
-/* FONCTIONS */
+// Automatisation de la création de chaque élement de la playlist HTML //
+/////// Création Elements Playlist ///////
+// (le "i" utilisé dans les fonctions suivante est défini par la boucle FOR qui réunira toutes les fonctions) //
+
+// creation <li> ('list-item')
+function createLi() {
+    let playlistLiCreate = document.createElement('li');
+    playlistLiCreate.classList.add('list-item');
+    playlistLiCreate.id = 'item' + i;
+    playlistList.appendChild(playlistLiCreate);
+}
+
+// creation de la <div> ('list-item-container)
+function createDiv(li) {
+    let playlistDivCreate = document.createElement('div');
+    playlistDivCreate.classList.add('list-item-container');
+    playlistDivCreate.classList.add('list-item-container' + i);
+    li = playlistLi = document.querySelector('#item' + i);
+    li.appendChild(playlistDivCreate);
+}
+
+// creation des <span> titre et durée
+function createSpans(div) {
+    let playlistCreateTitleSpan = document.createElement('span');
+    playlistCreateTitleSpan.textContent = trackList[i].name;
+    playlistCreateTitleSpan.classList.add('list-title' + i, 'list-text-bold');
+    let playlistCreateDurationSpan = document.createElement('span');
+    playlistCreateDurationSpan.textContent = trackList[i].duration;
+    playlistCreateDurationSpan.classList.add('list-duration' + i)
+    div = document.querySelector('.list-item-container' + i);
+
+    div.appendChild(playlistCreateTitleSpan); //crée le span dans la DIV précedemment crée
+    div.appendChild(playlistCreateDurationSpan); //même chose ici
+}
+
+/**
+ * Regroupe les fonctions de création de la playlist
+ */
+function createPlaylistElement() {
+    for (i = 0; i < trackList.length; i++) {
+        createLi();
+        createDiv();
+        createSpans();
+
+        // creation du SPAN 'list-artiste'
+        let playListArtistSpan = document.createElement('span');
+        playListArtistSpan.textContent = trackList[i].artist;
+        playListArtistSpan.classList.add('list-artiste' + i);
+        playlistLi.appendChild(playListArtistSpan); //crée le span dans le LI playlistList
+    }
+}
+createPlaylistElement();
+
+for (let i = 0; i < trackList.length; i++) {
+    let listItemList = document.querySelector('#item' + i);
+    listItemList.addEventListener('click', e => {
+        loadTrack(i);
+        playPauseMusic();
+    })
+}
+
+// Fin de l'automatisation //
+
+
+
 /**
  * Modifie l'icone du bouton Play / Pause lorsque l'on clique dessus.
  */
@@ -164,27 +213,10 @@ function loadNextNextTrack(textTrack2) {
     artisteSuivant2.innerHTML = trackList[textTrack2].artist;
 }
 
-// Afiche les infos de la playlist
-function loadPlaylist() {
-    playlistTitre1.innerHTML = trackList[0].name;
-    playlistDuration1.innerHTML = trackList[0].duration;
-    playlistArtist1.innerHTML = trackList[0].artist;
-    playlistTitre2.innerHTML = trackList[1].name;
-    playlistDuration2.innerHTML = trackList[1].duration;
-    playlistArtist2.innerHTML = trackList[1].artist;
-    playlistTitre3.innerHTML = trackList[2].name;
-    playlistDuration3.innerHTML = trackList[2].duration;
-    playlistArtist3.innerHTML = trackList[2].artist;
-    playlistTitre4.innerHTML = trackList[3].name;
-    playlistDuration4.innerHTML = trackList[3].duration;
-    playlistArtist4.innerHTML = trackList[3].artist;
-}
-
-loadPlaylist();
-
 loadTrack(indexTrack);
 loadNextTrack(textTrack);
 loadNextNextTrack(textTrack2);
+
 
 
 // Switch Play Pause
@@ -346,7 +378,6 @@ boutonPlay.addEventListener('click', e => {
 // Bouton Stop //
 boutonStop.addEventListener('click', e => {
     stopMusic();
-    console.log("j'ai cliqué");
     e.target.blur();
 });
 
@@ -374,31 +405,6 @@ boutonPlaylist.addEventListener('click', e => {
     e.target.blur();
 });
 
-// Playlist Items //
-playlistItem1.addEventListener('click', e => {
-    loadTrack(0);
-    playPauseMusic();
-})
-
-playlistItem2.addEventListener('click', e => {
-    loadTrack(1);
-    playPauseMusic();
-})
-
-playlistItem3.addEventListener('click', e => {
-    loadTrack(2);
-    playPauseMusic();
-})
-
-playlistItem4.addEventListener('click', e => {
-    loadTrack(3);
-    playPauseMusic();
-})
-
-// Volume range //
-// volumeRange.addEventListener('input', e => {
-//     player.volume = (volumeRange.value * 0.01);
-// })
 
 // Progression Range //
 progressionRange.addEventListener('change', e => {
@@ -406,20 +412,20 @@ progressionRange.addEventListener('change', e => {
 });
 
 
-// Spacebar (play/pause), arrows (prev/next)
+// Barre espace (play/pause), Flèches (prev/next)
 if (player) {
     window.addEventListener('keydown', function (event) {
         var key = event.which || event.keyCode
-        if (key === 32) { // space
+        if (key === 32) { // touche clavier: Barre espace
             playPauseIcon();
             playPauseCassette();
             playPauseMusic();
-        } else if (key == 37) { // left arrow
+        } else if (key == 37) { // touche clavier: flèche gauche
             prevMusic();
-        } else if (key == 39) { // right arrow
+        } else if (key == 39) { // touche clavier: flèche droite
             nextMusic();
         }
-        else if (key == 83) { // letter s
+        else if (key == 83) { // touche clavier: lettre s
             stopMusic();
             stopCassette();
             playIcon();
@@ -429,6 +435,6 @@ if (player) {
 
 
 document.addEventListener('click', e => {
-    if (!e.target.classList.contains('test'))
+    if (!e.target.classList.contains('jsnone'))
         playlistModal.classList.add('none');
 })
