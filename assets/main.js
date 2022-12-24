@@ -61,6 +61,8 @@ let musiqueSuivante = document.querySelector('#musique_suivante-1');
 let musiqueSuivante2 = document.querySelector('#musique_suivante-2');
 let artisteSuivant = document.querySelector('#artiste1');
 let artisteSuivant2 = document.querySelector('#artiste2');
+let durationSuivante = document.querySelector('#duration-suivante-1');
+let durationSuivante2 = document.querySelector('#duration-suivante-2');
 
 // Playlist
 let boutonPlaylist = document.querySelector('.jsnone');
@@ -206,12 +208,15 @@ function loadTrack(indexTrack) {
 function loadNextTrack(textTrack) {
     musiqueSuivante.innerHTML = trackList[textTrack].name;
     artisteSuivant.innerHTML = trackList[textTrack].artist;
+    durationSuivante.innerHTML = trackList[textTrack].duration;
+
 }
 
 // Afiche les infos de la muisque qui suit la musique suivante
 function loadNextNextTrack(textTrack2) {
     musiqueSuivante2.innerHTML = trackList[textTrack2].name;
     artisteSuivant2.innerHTML = trackList[textTrack2].artist;
+    durationSuivante2.innerHTML = trackList[textTrack2].duration;
 }
 
 loadTrack(indexTrack);
