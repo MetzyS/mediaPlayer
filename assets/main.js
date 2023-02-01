@@ -28,6 +28,13 @@ let trackList = [
         img: "bcg-jojo",
         duration: "0:58",
     },
+    {
+        name: "Parasyte",
+        path: "assets/music/parasyte.mp3",
+        artist: "Kijugo",
+        img: "bcg-para",
+        duration: "0:58",
+    },
 ];
 let indexTrack = 0;     // permet d'itérer dans trackList[]
 let textTrack = 1;      // permet d'itérer uniquement pour le texte

@@ -67,6 +67,8 @@ body {
     margin-top: 20px;
 }
 
+/* grid */
+
 .container-jaune {
     display: grid;
     width: 100%;
@@ -81,7 +83,7 @@ body {
 }
 
 
-/** DÃ©but style GAUCHE (fonctionnalitÃ©s) **/
+/** debut style GAUCHE (fonctionnalites) **/
 .gauche {
     display: flex;
     flex-direction: column;
@@ -105,12 +107,6 @@ body {
     padding-top: 0;
 }
 
-/* .titre-container {
-    display: flex;
-    flex-direction: column;
-    white-space: nowrap;
-} */
-
 .titre-container {
     display: grid;
     grid-template-areas: "titre album-img"
@@ -128,11 +124,11 @@ body {
     font-size: var(--artiste-s);
 }
 
-/* grid */
 .titre {
     grid-area: titre;
 }
 
+/* album imgs */
 .album-img {
     grid-area: album-img;
     align-self: center;
@@ -141,6 +137,12 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+}
+
+.bcg-para {
+    width: 60px;
+    height: 60px;
+    background-image: url(../img/parasyte.png);
 }
 
 .bcg-poke {
