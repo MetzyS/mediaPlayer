@@ -41,7 +41,9 @@
 
 body {
     display: flex;
+    justify-content: center;
     background-color: #f9dcc4;
+    margin-top: 30px
 }
 
 .bcg-none {
