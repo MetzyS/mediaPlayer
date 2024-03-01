@@ -1,0 +1,155 @@
+@font-face {
+  font-family: "Bionic";
+  src: url(./assets/font/bionic_type/Biotypb.ttf);
+}
+
+#bouton-prev {
+  background-image: url(./img/boutons/fast-forward-fill.svg);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  transform: rotate(180deg);
+}
+
+.bouton-play {
+  background-image: url(./img/boutons/play-fill.svg);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+}
+
+.bouton-pause {
+  background-image: url(./img/boutons/pause-fill.svg);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+}
+
+#bouton-stop {
+  color: var(--stop-color);
+  background-image: url(./img/boutons/stop-square-white.svg);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: center;
+}
+
+#bouton-next {
+  background-image: url(./img/boutons/fast-forward-fill.svg);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+}
+
+.album-img {
+  grid-area: album-img;
+  align-self: center;
+  justify-self: end;
+  margin-right: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.bcg-para {
+  width: 60px;
+  height: 60px;
+  background-image: url(./img/parasyte.png);
+}
+
+.bcg-poke {
+  width: 50px;
+  height: 50px;
+  background-image: url(./img/pokepng.png);
+}
+
+.bcg-mario {
+  width: 60px;
+  height: 60px;
+  background-image: url(./img/mario.png);
+}
+
+.bcg-zelda {
+  width: 60px;
+  height: 60px;
+  background-image: url(./img/zeldapng.png);
+}
+
+.bcg-jojo {
+  width: 60px;
+  height: 60px;
+  background-image: url(./img/giorno.png);
+}
+
+.mute {
+  display: block;
+  background-image: url(./img/volume/volume-mute-fill.svg);
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 100%;
+  background-position: center;
+  margin: 0;
+}
+
+.full {
+  display: block;
+  background-image: url(./img/volume/volume-up-fill.svg);
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 100%;
+  background-position: center;
+  margin: 0;
+}
+
+.liste-button {
+  background-image: url(./img/boutons/list.svg);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10px;
+  border-bottom: 1px solid #d6d5d0;
+  border-top: 1px solid #d6d5d0;
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+.list-item:first-of-type {
+  border-top: none;
+}
+
+.list-item:last-of-type {
+  border-bottom: none;
+}
+
+.list-item-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.list-item:hover {
+  background: #2e2e2e;
+}
+
+.list-item:hover > span,
+.list-item:hover > div > span {
+  color: white;
+  cursor: pointer;
+}
+
+.list-text-bold {
+  font-weight: bold;
+}
+
+.none {
+  display: none;
+}
+
+.walkman-titre {
+  font-family: Bionic;
+}
