@@ -153,3 +153,112 @@
 .walkman-titre {
   font-family: Bionic;
 }
+
+.clip-path {
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.clip-path-fenetre {
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.arrow {
+  display: none;
+  position: absolute;
+  background-image: url(../img/K7/arrow.svg);
+  background-repeat: no-repeat;
+  width: 29px;
+  /* background-size: 50%; */
+  top: 105px;
+  height: 10px;
+  right: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (min-width: 390px) {
+  .trapeze-fenetre {
+    left: -20px !important;
+  }
+}
+
+@media screen and (min-width: 470px) {
+  .trapeze-fenetre {
+    left: 10px !important;
+  }
+}
+
+@media screen and (min-width: 510px) {
+  .trapeze-fenetre {
+    top: 45px !important;
+    left: -60px !important;
+    transform: rotate(0deg) !important;
+  }
+}
+
+@media screen and (min-width: 580px) {
+  .trapeze-fenetre {
+    left: -20px !important;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .trapeze-fenetre {
+    left: 40px !important;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .trapeze-fenetre {
+    left: 40px !important;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .trapeze-fenetre {
+    top: 40px !important;
+    left: 70px !important;
+  }
+}
+
+@media screen and (min-width: 730px) {
+  .trapeze-fenetre {
+    /* left: 30px; */
+    width: 500px !important;
+    height: 500px !important ;
+  }
+}
+
+@media screen and (min-width: 870px) {
+  .trapeze-fenetre {
+    left: 65px !important;
+    width: 600px !important;
+    height: 600px !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .clip-path {
+    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .clip-path-fenetre {
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .trapeze-fenetre {
+    left: 90px !important;
+    top: 0px !important;
+    width: 500px !important;
+    height: 500px !important;
+  }
+  .fenetre {
+    height: 200px !important;
+    margin-bottom: 30px;
+    margin-left: 110px !important;
+  }
+
+  .arrow {
+    display: block;
+  }
+}
